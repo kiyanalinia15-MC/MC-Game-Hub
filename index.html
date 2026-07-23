@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MC Game Hub V2</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#050505;
+font-family:'Orbitron',Tahoma,sans-serif;
+color:white;
+overflow-x:hidden;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+
+radial-gradient(circle at top,rgba(0,255,255,.08),transparent 40%),
+
+radial-gradient(circle at bottom,rgba(0,255,255,.05),transparent 50%);
+
+z-index:-2;
+
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background-image:
+
+linear-gradient(rgba(0,255,255,.03) 1px,transparent 1px),
+
+linear-gradient(90deg,rgba(0,255,255,.03) 1px,transparent 1px);
+
+background-size:45px 45px;
+
+animation:gridMove 15s linear infinite;
+
+z-index:-1;
+
+}
+
+@keyframes gridMove{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+100%{
+
+transform:translateY(45px);
+
+}
+
+}
+
+header{
+
+width:100%;
+
+padding:25px 70px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+position:sticky;
+
+top:0;
+
+backdrop-filter:blur(12px);
+
+background:rgba(0,0,0,.45);
+
+border-bottom:2px solid turquoise;
+
+box-shadow:0 0 20px rgba(64,224,208,.35);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-size:38px;
+
+font-weight:bold;
+
+letter-spacing:3px;
+
+color:turquoise;
+
+text-shadow:
+
+0 0 10px turquoise,
+
+0 0 20px turquoise,
+
+0 0 40px turquoise;
+
+}
+
+nav{
+
+display:flex;
+
+gap:35px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:white;
+
+font-size:18px;
+
+transition:.35s;
+
+}
+
+nav a:hover{
+
+color:turquoise;
+
+text-shadow:0 0 15px turquoise;
+
+}
+
+.hero{
+
+min-height:90vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:30px;
+
+}
+
+.hero h1{
+
+font-size:75px;
+
+margin-bottom:20px;
+
+color:turquoise;
+
+text-shadow:
+
+0 0 15px turquoise,
+
+0 0 30px turquoise,
+
+0 0 60px turquoise;
+
+animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{
+
+text-shadow:
+
+0 0 10px turquoise,
+
+0 0 25px turquoise;
+
+}
+
+to{
+
+text-shadow:
+
+0 0 25px turquoise,
+
+0 0 60px cyan;
+
+}
+
+}
+
+.hero p{
+
+font-size:23px;
+
+color:#d7d7d7;
+
+max-width:850px;
+
+line-height:1.8;
+
+margin-bottom:45px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.btn{
+
+padding:16px 42px;
+
+border:2px solid turquoise;
+
+border-radius:12px;
+
+text-decoration:none;
+
+color:turquoise;
+
+font-size:19px;
+
+transition:.35s;
+
+}
+
+.btn:hover{
+
+background:turquoise;
+
+color:black;
+
+box-shadow:0 0 25px turquoise;
+
+transform:translateY(-6px);
+
+}
+
+.games{
+
+width:90%;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:35px;
+
+padding-bottom:80px;
+
+}
+
+.card{
+
+background:rgba(15,15,15,.92);
+
+border:2px solid turquoise;
+
+border-radius:20px;
+
+padding:30px;
+
+transition:.4s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card:hover{
+
+transform:translateY(-12px);
+
+box-shadow:
+
+0 0 20px turquoise,
+
+0 0 45px rgba(64,224,208,.5);
+
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:-100%;
+
+left:-100%;
+
+width:200%;
+
+height:200%;
+
+background:linear-gradient(
+45deg,
+transparent,
+rgba(64,224,208,.15),
+transparent
+);
+
+transform:rotate(30deg);
+
+transition:.8s;
+
+}
+
+.card:hover::before{
+
+top:100%;
+
+left:100%;
+
+}
+.card h2{
+
+font-size:32px;
+
+color:turquoise;
+
+margin-bottom:18px;
+
+text-shadow:0 0 10px turquoise;
+
+}
+
+.card p{
+
+font-size:17px;
+
+line-height:1.8;
+
+color:#d7d7d7;
+
+margin-bottom:25px;
+
+}
+
+.play-btn{
+
+display:inline-block;
+
+padding:13px 35px;
+
+border:2px solid turquoise;
+
+border-radius:10px;
+
+text-decoration:none;
+
+color:turquoise;
+
+transition:.35s;
+
+font-weight:bold;
+
+}
+
+.play-btn:hover{
+
+background:turquoise;
+
+color:black;
+
+box-shadow:0 0 25px turquoise;
+
+}
+
+.stats{
+
+width:90%;
+
+margin:80px auto;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.stat{
+
+background:#101010;
+
+border:2px solid turquoise;
+
+border-radius:18px;
+
+padding:30px;
+
+text-align:center;
+
+transition:.35s;
+
+}
+
+.stat:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 25px turquoise;
+
+}
+
+.stat h1{
+
+font-size:55px;
+
+color:turquoise;
+
+margin-bottom:12px;
+
+text-shadow:0 0 15px turquoise;
+
+}
+
+.stat p{
+
+font-size:18px;
+
+color:#dddddd;
+
+}
+
+footer{
+
+margin-top:80px;
+
+padding:35px;
+
+text-align:center;
+
+border-top:2px solid turquoise;
+
+color:#cccccc;
+
+background:#070707;
+
+}
+
+@media(max-width:900px){
+
+header{
+
+padding:20px;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.hero h1{
+
+font-size:55px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.games{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+🎮 MC Game Hub
+
+</div>
+
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#">Games</a>
+
+<a href="#">LeaderBoard</a>
+
+<a href="#">backUP</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>
+
+MC Game Hub V2
+
+</h1>
+
+<p>
+
+به دنیای بازی‌های من خوش اومدی.
+اینجا تمام بازی‌هایی که ساختم قرار می‌گیرن.
+این پروژه در نسخه V2 با طراحی نئونی و حرفه‌ای ساخته شده.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#games" class="btn">
+
+شروع
+
+</a>
+
+<a href="#" class="btn">
+
+درباره پروژه
+
+</a>
+
+</div>
+
+</section>
+
+<section class="games" id="games">
+
+<div class="card">
+
+<h2>
+
+🎮 XO V2
+
+</h2>
+
+<p>
+
+نسخه حرفه‌ای بازی XO
+با سیستم امتیاز،
+چند دست،
+ظاهر نئونی
+و امکانات بیشتر.
+
+</p>
+
+<a class="play-btn" href="XO_V2.html">
+
+Play
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+🐍 Snake
+
+</h2>
+
+<p>
+
+به زودی...
+
+</p>
+
+<a class="play-btn" href="#">
+
+Coming Soon
+
+</a>
+
+</div>
+<div class="card">
+
+<h2>
+
+🧠 Memory Game
+
+</h2>
+
+<p>
+
+بازی تقویت حافظه
+با مراحل مختلف.
+(به زودی)
+
+</p>
+
+<a class="play-btn" href="#">
+
+Coming Soon
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+✊ Rock Paper Scissors
+
+</h2>
+
+<p>
+
+بازی سنگ، کاغذ، قیچی
+در نسخه‌های بعدی اضافه خواهد شد.
+
+</p>
+
+<a class="play-btn" href="#">
+
+Coming Soon
+
+</a>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat">
+
+<h1>
+
+4
+
+</h1>
+
+<p>
+
+Games
+
+</p>
+
+</div>
+
+<div class="stat">
+
+<h1>
+
+1
+
+</h1>
+
+<p>
+
+Playable
+
+</p>
+
+</div>
+
+<div class="stat">
+
+<h1>
+
+v.2
+
+</h1>
+
+<p>
+
+Current Version
+
+</p>
+
+</div>
+
+<div class="stat">
+
+<h1>
+
+100%
+
+</h1>
+
+<p>
+
+Made With HTML & CSS
+
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 MC Game Hub
+
+</p>
+
+<p>
+
+Designed By Kiyan ❤️
+
+</p>
+
+</footer>
+
+<script>
+
+const cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+
+const y=e.clientY-rect.top;
+
+card.style.background=
+
+`radial-gradient(circle at ${x}px ${y}px,
+rgba(64,224,208,.18),
+#111 65%)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.background="#111";
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
