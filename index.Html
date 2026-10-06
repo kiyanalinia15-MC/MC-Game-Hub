@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MC Game Hub V2</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    background:#050505;
+    font-family:'Orbitron',Tahoma,sans-serif;
+    color:white;
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+
+    radial-gradient(
+        circle at top,
+        rgba(0,255,255,.08),
+        transparent 40%
+    ),
+
+    radial-gradient(
+        circle at bottom,
+        rgba(0,255,255,.05),
+        transparent 50%
+    );
+
+    z-index:-2;
+}
+
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background-image:
+
+    linear-gradient(
+        rgba(0,255,255,.03) 1px,
+        transparent 1px
+    ),
+
+    linear-gradient(
+        90deg,
+        rgba(0,255,255,.03) 1px,
+        transparent 1px
+    );
+
+    background-size:45px 45px;
+
+    animation:gridMove 15s linear infinite;
+
+    z-index:-1;
+}
+
+
+@keyframes gridMove{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    100%{
+        transform:translateY(45px);
+    }
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+
+    width:100%;
+
+    padding:12px 70px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    position:sticky;
+
+    top:0;
+
+    backdrop-filter:blur(12px);
+
+    background:rgba(0,0,0,.45);
+
+    border-bottom:2px solid turquoise;
+
+    box-shadow:
+    0 0 20px rgba(64,224,208,.35);
+
+    z-index:999;
+
+}
+
+
+/* =========================
+   LOGO TEXT
+========================= */
+
+.logo{
+
+    font-size:38px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+    color:turquoise;
+
+    text-shadow:
+
+    0 0 10px turquoise,
+    0 0 20px turquoise,
+    0 0 40px turquoise;
+
+}
+
+
+/* =========================
+   MAIN IMAGE LOGO
+========================= */
+
+.logo-area{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.main-logo{
+
+    width:95px;
+
+    height:80px;
+
+    object-fit:contain;
+
+    display:block;
+
+    filter:
+
+    drop-shadow(
+        0 0 5px rgba(64,224,208,.5)
+    )
+
+    drop-shadow(
+        0 0 12px rgba(64,224,208,.25)
+    );
+
+    transition:.35s;
+
+}
+
+
+.main-logo:hover{
+
+    transform:scale(1.08);
+
+    filter:
+
+    drop-shadow(
+        0 0 10px turquoise
+    )
+
+    drop-shadow(
+        0 0 20px rgba(64,224,208,.6)
+    );
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+
+nav a{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:18px;
+
+    transition:.35s;
+
+    cursor:pointer;
+
+}
+
+
+nav a:hover{
+
+    color:turquoise;
+
+    text-shadow:
+    0 0 15px turquoise;
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+    min-height:90vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+
+.hero h1{
+
+    font-size:75px;
+
+    margin-bottom:20px;
+
+    color:turquoise;
+
+    text-shadow:
+
+    0 0 15px turquoise,
+    0 0 30px turquoise,
+    0 0 60px turquoise;
+
+    animation:glow 2s infinite alternate;
+
+}
+
+
+@keyframes glow{
+
+    from{
+
+        text-shadow:
+
+        0 0 10px turquoise,
+        0 0 25px turquoise;
+
+    }
+
+    to{
+
+        text-shadow:
+
+        0 0 25px turquoise,
+        0 0 60px cyan;
+
+    }
+
+}
+
+
+.hero p{
+
+    font-size:23px;
+
+    color:#d7d7d7;
+
+    max-width:850px;
+
+    line-height:1.8;
+
+    margin-bottom:45px;
+
+}
+
+
+/* =========================
+   HERO BUTTONS
+========================= */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.btn{
+
+    padding:16px 42px;
+
+    border:2px solid turquoise;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:turquoise;
+
+    font-size:19px;
+
+    transition:.35s;
+
+}
+
+
+.btn:hover{
+
+    background:turquoise;
+
+    color:black;
+
+    box-shadow:
+    0 0 25px turquoise;
+
+    transform:translateY(-6px);
+
+}
+
+
+/* =========================
+   GAMES
+========================= */
+
+.games{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+    padding-bottom:80px;
+
+}
+
+
+/* =========================
+   GAME CARD
+========================= */
+
+.card{
+
+    background:rgba(15,15,15,.92);
+
+    border:2px solid turquoise;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    transition:.4s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:
+
+    0 0 20px turquoise,
+    0 0 45px rgba(64,224,208,.5);
+
+}
+
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-100%;
+    left:-100%;
+
+    width:200%;
+    height:200%;
+
+    background:
+
+    linear-gradient(
+        45deg,
+        transparent,
+        rgba(64,224,208,.15),
+        transparent
+    );
+
+    transform:rotate(30deg);
+
+    transition:.8s;
+
+}
+
+
+.card:hover::before{
+
+    top:100%;
+    left:100%;
+
+}
+
+
+.card h2{
+
+    font-size:32px;
+
+    color:turquoise;
+
+    margin-bottom:18px;
+
+    text-shadow:
+    0 0 10px turquoise;
+
+}
+
+
+.card p{
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    color:#d7d7d7;
+
+    margin-bottom:25px;
+
+}
+
+
+/* =========================
+   PLAY BUTTON
+========================= */
+
+.play-btn{
+
+    display:inline-block;
+
+    padding:13px 35px;
+
+    border:2px solid turquoise;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    color:turquoise;
+
+    transition:.35s;
+
+    font-weight:bold;
+
+}
+
+
+.play-btn:hover{
+
+    background:turquoise;
+
+    color:black;
+
+    box-shadow:
+    0 0 25px turquoise;
+
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+
+    width:90%;
+
+    margin:80px auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+
+.stat{
+
+    background:#101010;
+
+    border:2px solid turquoise;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+
+.stat:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 0 25px turquoise;
+
+}
+
+
+.stat h1{
+
+    font-size:55px;
+
+    color:turquoise;
+
+    margin-bottom:12px;
+
+    text-shadow:
+    0 0 15px turquoise;
+
+}
+
+
+.stat p{
+
+    font-size:18px;
+
+    color:#dddddd;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    margin-top:80px;
+
+    padding:35px;
+
+    text-align:center;
+
+    border-top:2px solid turquoise;
+
+    color:#cccccc;
+
+    background:#070707;
+
+}
+
+
+/* =========================
+   BACKUP PANEL
+========================= */
+
+#backupPanel{
+
+    display:none;
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:90%;
+
+    max-width:550px;
+
+    background:rgba(10,10,10,.98);
+
+    border:2px solid turquoise;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:
+
+    0 0 15px rgba(64,224,208,.5),
+    0 0 35px rgba(64,224,208,.2);
+
+    z-index:2000;
+
+    text-align:center;
+
+}
+
+
+#backupPanel h2{
+
+    color:turquoise;
+
+    margin-bottom:25px;
+
+    text-shadow:
+
+    0 0 10px turquoise,
+    0 0 20px turquoise;
+
+}
+
+
+#backupPanel input,
+#backupPanel textarea{
+
+    width:100%;
+
+    background:#080808;
+
+    color:white;
+
+    border:2px solid turquoise;
+
+    border-radius:10px;
+
+    padding:13px;
+
+    margin-bottom:15px;
+
+    font-family:Tahoma,sans-serif;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+
+#backupPanel textarea{
+
+    min-height:130px;
+
+    resize:vertical;
+
+}
+
+
+#backupPanel input:focus,
+#backupPanel textarea:focus{
+
+    box-shadow:
+    0 0 12px rgba(64,224,208,.5);
+
+}
+
+
+#sendReport,
+#closeBackup{
+
+    padding:12px 25px;
+
+    border:2px solid turquoise;
+
+    border-radius:10px;
+
+    background:#111;
+
+    color:turquoise;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+    margin:5px;
+
+}
+
+
+#sendReport:hover,
+#closeBackup:hover{
+
+    background:turquoise;
+
+    color:black;
+
+    box-shadow:
+    0 0 20px turquoise;
+
+}
+
+
+#reportStatus{
+
+    min-height:25px;
+
+    margin-top:15px;
+
+    color:turquoise;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    header{
+
+        padding:15px 20px;
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+
+    .logo{
+
+        font-size:30px;
+
+        text-align:center;
+
+    }
+
+
+    .main-logo{
+
+        width:75px;
+
+        height:65px;
+
+    }
+
+
+    nav{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:20px;
+
+    }
+
+
+    nav a{
+
+        font-size:15px;
+
+    }
+
+
+    .hero h1{
+
+        font-size:48px;
+
+    }
+
+
+    .hero p{
+
+        font-size:17px;
+
+    }
+
+
+    .games{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 5px solid #222;
+    border-top: 5px solid #00ffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+#loading-screen p {
+    color: #00ffff;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#loading-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+        
+<!-- Loading Screen -->
+<div id="loading-screen">
+    <div class="loader"></div>
+    <p>Loading...</p>
+</div>
+
+
+
+<!-- =========================
+     BACKUP PANEL
+========================= -->
+
+<div id="backupPanel">
+
+<h2>🛠️ Report a Problem</h2>
+
+<input
+type="text"
+id="reportName"
+placeholder="Enter Your Name"
+
+>
+
+<textarea
+id="reportProblem"
+placeholder="Describe your problem..."
+></textarea>
+
+<button id="sendReport">
+
+Send Report
+
+</button>
+
+<button id="closeBackup">
+
+Close
+
+</button>
+
+<div id="reportStatus"></div>
+
+</div>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header id="top">
+
+<!-- LOGO TEXT -->
+
+<div class="logo">
+
+🎮 MC Game Hub
+
+</div>
+
+<!-- MAIN LOGO -->
+
+<div class="logo-area">
+
+<img
+src="logo.png"
+alt="MC Game Hub Logo"
+class="main-logo"
+
+>
+
+</div>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="#top">
+
+Home
+
+</a>
+
+<a href="#games">
+
+Games
+
+</a>
+
+<a href="#">
+
+LeaderBoard
+
+</a>
+
+<a href="#backup" id="backupButton">
+
+backUP
+
+</a>
+
+</nav>
+
+</header>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+<h1>
+
+MC Game Hub V2
+
+</h1>
+
+<p>
+
+به هاب بازی‌های من خوش اومدی.
+اینجا تمام بازی‌هایی که ساختم قرار می‌گیرن.
+این پروژه در نسخه V2 با طراحی نئونی و حرفه‌ای ساخته شده.
+
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="#games"
+class="btn"
+
+>
+
+Start
+
+</a>
+
+<a
+href="#"
+class="btn"
+
+>
+
+About Project
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     GAMES
+========================= -->
+
+<section
+class="games"
+id="games"
+>
+
+<!-- XO -->
+
+<div class="card">
+
+<h2>
+
+🎮 XO V2
+
+</h2>
+
+<p>
+
+نسخه حرفه‌ای بازی XO
+با سیستم امتیاز،
+چند دست،
+ظاهر نئونی
+و امکانات بیشتر.
+
+</p>
+
+<a
+class="play-btn"
+href="XO.v2.html"
+
+>
+
+Play
+
+</a>
+
+</div>
+
+<!-- SNAKE -->
+
+<div class="card">
+
+<h2>
+
+🐍 Snake V1
+
+</h2>
+
+<p>
+
+بازی کلاسیک Snake
+با سیستم امتیاز،
+رکورد،
+افزایش سرعت
+و کنترل با کیبورد و موبایل.
+
+</p>
+
+<a
+class="play-btn"
+href="Snake.html"
+
+>
+
+Play
+
+</a>
+
+</div>
+
+<!-- MEMORY -->
+
+<div class="card">
+
+<h2>
+
+🧠 Memory Game
+
+</h2>
+
+<p>
+
+بازی تقویت حافظه
+با تایمر و شمارش حرکات
+و ظاهر نئونی
+
+</p>
+
+<a
+class="play-btn"
+href="MemoryGame.Html"
+
+>
+
+PLay
+
+</a>
+
+</div>
+
+<!-- ROCK PAPER SCISSORS -->
+
+<div class="card">
+
+<h2>
+
+✊ Rock Paper Scissors
+
+</h2>
+
+<p>
+
+بازی سنگ، کاغذ، قیچی
+بازی دونفره و روبات.
+
+</p>
+
+<a
+class="play-btn"
+href="RPS.V2.Html"
+
+>
+
+Play
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+
+<div class="stat">
+
+<h1>
+
+4
+
+</h1>
+
+<p>
+
+Games
+
+</p>
+
+</div>
+
+<div class="stat">
+
+<h1>
+
+4
+
+</h1>
+
+<p>
+
+Playable
+
+</p>
+
+</div>
+
+<div class="stat">
+
+<h1>
+
+V2
+
+</h1>
+
+<p>
+
+Current Version
+
+</p>
+
+</div>
+
+<div class="stat">
+
+<h1>
+
+100%
+
+</h1>
+
+<p>
+
+Made With HTML & CSS
+
+</p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<p>
+
+© 2026 MC Game Hub
+
+</p>
+
+<p>
+
+Designed By Kiyan ❤️
+
+</p>
+
+</footer>
+
+<script>
+
+
+/* =========================
+   CARD MOUSE EFFECT
+========================= */
+
+const cards =
+document.querySelectorAll(".card");
+
+
+cards.forEach(function(card){
+
+    card.addEventListener(
+        "mousemove",
+        function(e){
+
+            const rect =
+            card.getBoundingClientRect();
+
+
+            const x =
+            e.clientX - rect.left;
+
+
+            const y =
+            e.clientY - rect.top;
+
+
+            card.style.background =
+
+            `radial-gradient(
+                circle at ${x}px ${y}px,
+                rgba(64,224,208,.18),
+                #111 65%
+            )`;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        function(){
+
+            card.style.background =
+            "rgba(15,15,15,.92)";
+
+        }
+    );
+
+});
+
+
+/* =========================
+   BACKUP / REPORT SYSTEM
+========================= */
+
+const backupButton =
+document.getElementById("backupButton");
+
+
+const backupPanel =
+document.getElementById("backupPanel");
+
+
+const closeBackup =
+document.getElementById("closeBackup");
+
+
+const sendReport =
+document.getElementById("sendReport");
+
+
+const reportName =
+document.getElementById("reportName");
+
+
+const reportProblem =
+document.getElementById("reportProblem");
+
+
+const reportStatus =
+document.getElementById("reportStatus");
+
+
+/* =========================
+   OPEN BACKUP
+========================= */
+
+backupButton.addEventListener(
+"click",
+function(event){
+
+    event.preventDefault();
+
+    backupPanel.style.display =
+    "block";
+
+}
+);
+
+
+/* =========================
+   CLOSE BACKUP
+========================= */
+
+closeBackup.addEventListener(
+"click",
+function(){
+
+    backupPanel.style.display =
+    "none";
+
+    reportStatus.textContent =
+    "";
+
+}
+);
+
+
+/* =========================
+   SEND REPORT
+========================= */
+
+sendReport.addEventListener(
+"click",
+function(){
+
+    const name =
+    reportName.value.trim();
+
+
+    const problem =
+    reportProblem.value.trim();
+
+
+    if(
+        name === "" ||
+        problem === ""
+    ){
+
+        reportStatus.textContent =
+        "⚠️ Please enter your name and problem.";
+
+        return;
+
+    }
+
+
+    let reports =
+    JSON.parse(
+        localStorage.getItem(
+            "mcGameHubReports"
+        )
+    ) || [];
+
+
+    const newReport = {
+
+        name:name,
+
+        problem:problem,
+
+        date:
+        new Date().toLocaleString()
+
+    };
+
+
+    reports.push(newReport);
+
+
+    localStorage.setItem(
+
+        "mcGameHubReports",
+
+        JSON.stringify(reports)
+
+    );
+
+
+    reportStatus.textContent =
+    "✅ Report received!";
+
+
+    reportName.value =
+    "";
+
+
+    reportProblem.value =
+    "";
+
+}
+);
+
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        document.getElementById("loading-screen").classList.add("hide");
+    }, 1500);
+});
+
+</script>
+
+</body>
+
+</html>
